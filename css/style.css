@@ -1,0 +1,308 @@
+/* CSS da página index.html */
+
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+  
+  
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      margin-top: 20px;
+    }
+
+header .container h1 {
+    font-family: 'Parisienne', cursive;
+    font-size: 3rem; 
+    color: white; 
+    margin: 0;
+    padding: 0;
+}
+
+    header {
+      background-color: #4d2f57;
+      color: white;
+      padding: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; 
+    }
+
+    .header-left, .header-right {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      justify-content: flex-start;
+    }
+
+    .header-right {
+      justify-content: flex-end;
+      flex-grow: 0;
+    }
+
+    nav {
+      margin-left: 20px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+/* Icone de adicionar (adm.html) abaixo */
+    #admin-area {
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+text-decoration: none;
+      margin-left: 30px;
+      animation: blink 1s infinite; /* Animação de piscar */
+      position: absolute;
+    color: rgb(247, 171, 8);
+    }
+
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: #f1c40f;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 20px;
+      padding: 5px 10px;
+      margin-left: 20px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      padding: 5px;
+      flex-grow: 1;
+      font-size: 1rem;
+    }
+
+    .search-box button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    main h2 {
+      margin: 20px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      max-width: 200px;
+      height: 250px;
+      border-radius: 5px;
+      margin: auto;
+      display: block;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #27ae60;
+    }
+
+    .btn-details {
+      display: block;
+      margin: 10px auto 0 auto;
+      padding: 8px 12px;
+      background-color: #d792da;
+        box-shadow: 0 4px 10px rgba(63, 38, 62, 0.418);
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      transition: background-color 0.3s;
+      max-width: 150px;
+      text-align: center;
+    }
+
+    .btn-details:hover {
+
+                 box-shadow: 0 4px 10px rgba(63, 38, 62, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal.hidden {
+      display: none;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 32px;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    #close-modal {
+      position: absolute;
+      top: 6px;
+      right: 0px;
+      width: 32px;
+      height: 32px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 50%;
+      background-color: #363232;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    #close-modal:hover {
+      background-color: #da0000;
+    }
+
+    .modal-images img {
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 200px;
+      background: #553838;
+      color: white;
+    }
+
+    .btn-buy {
+      background: linear-gradient(45deg, #4d2f57, #bd94ca);
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+      border-radius: 25px;
+      box-shadow: 0 4px 10px rgba(63, 38, 62, 0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      user-select: none;
+      display: inline-block;
+    }
+
+    .btn-buy:hover {
+     background: linear-gradient(45deg, #a163b6, #cca9d6);
+            box-shadow: 0 4px 10px rgba(63, 38, 62, 0.6);
+      transform: translateY(-2px);
+      color:white;
+    }
+
+    .btn-buy:active {
+      transform: translateY(1px);
+      box-shadow: 0 3px 8px rgba(243, 156, 18, 0.6);
+    }
+    
+    /* Estilo para a bolha de notificação */
+    .notificacao {
+      position: absolute; 
+      top: 10px; 
+      left: 85px; 
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 8px; 
+      font-size: 0.75rem; 
+      font-weight: 700; 
+      line-height: 1;
+      color: #fef2f2; 
+      background-color: #dc2626; 
+      border-radius: 50%; 
+      transform: translate(50%, -50%); 
+    }
+
+
+    li.relative {
+      position: relative;
+      bottom: 4px;
+    }

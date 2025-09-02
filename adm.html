@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração - Loja de Roupas</title>
+    <link rel="stylesheet" href="./css/style3.css">
+    <link rel="icon" type="image/png" href="./src/favicon/favicon.png">
+  
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Adicionar Novo Produto</h2>
+    <form id="product-form">
+        <div class="form-group">
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" name="preco" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="imgSrc">URL da Imagem Principal:</label>
+            <input type="url" id="imgSrc" name="imgSrc" required>
+        </div>
+        <div class="form-group">
+            <label for="fotosAdicionais">URLs de Fotos Adicionais (separadas por vírgula):</label>
+            <textarea id="fotosAdicionais" name="fotosAdicionais" rows="2"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Salvar Produto</button>
+    </form>
+</div>
+
+<script src="./js/script3.js"></script>
+
+</body>
+</html>

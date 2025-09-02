@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Carrinho</title>
+<link rel="stylesheet" href="./css/style2.css">
+<link rel="icon" type="image/png" href="./src/favicon/favicon.png">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Meu Carrinho</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">🛍️ Continuar Comprando</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="carrinho-vazio" class="hidden">
+      <br>
+      <p style="text-align: center; font-weight: bolder;" >Seu carrinho está vazio.</p>
+    </div>
+
+    <div id="carrinho-conteudo" class="hidden">
+      <div id="carrinho-lista" class="carrinho-grid">
+   
+      </div>
+      <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 1.25rem; font-weight: bold;">Total:</span>
+        <span id="carrinho-total" style="font-size: 1.25rem; font-weight: bold; color: #2b6cb0;">R$ 0,00</span>
+      </div>
+      <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+<div class="centralizar-na-tela">
+  <button class="btn-finalizar">Finalizar Compra</button>
+</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Loja Entrelacé - Todos os direitos reservados</p>
+  </footer>
+
+<script src="./js/script2.js"></script>
+</body>
+</html>

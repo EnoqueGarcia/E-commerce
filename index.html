@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-commerce</title>
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/mobile.css">
+<link rel="icon" type="image/png" href="./src/favicon/favicon.png">
+
+</head>
+<body>
+
+  <header>
+       
+    <div class="container">
+    <h1>Projeto E-commerce</h1> 
+
+      <nav>
+        <ul>
+          <li><a href="#" class="active">Todos</a></li>
+          <li><a href="#">Adulto</a></li>
+          <li><a href="#">Infantil</a></li>
+          <li class="relative">
+            <a href="carrinho.html">
+              🛒 Carrinho
+            </a>
+            <span id="carrinho-contador" class="notificacao hidden">0</span>
+          </li>
+         
+        </ul>
+      </nav>
+      <div class="search-box">
+          <input type="text" id="search-input" placeholder="Pesquisar produtos...">
+       
+          <button id="search-button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+              <li>
+            <a href="adm.html" id="admin-area">
+              Adicionar Produto +
+            </a>
+          </li>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+ 
+    <div class="grid" id="products-grid">
+      <p id="loading-message">
+        Carregando produtos...
+      </p>
+    </div>
+    
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <h3>Fotos do Produto</h3>
+        <div id="modal-images" class="modal-images"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Loja de Roupas - Todos os direitos reservados</p>
+  </footer>
+  
+  <script src="./js/script.js"></script>
+</body>
+</html>
