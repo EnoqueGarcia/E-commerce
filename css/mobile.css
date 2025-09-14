@@ -1,5 +1,11 @@
   @media (max-width: 768px) {
 
+h1{
+position: relative;
+  right: 80px;
+
+}
+
       header .container {
         flex-direction: column;
         align-items: center;
