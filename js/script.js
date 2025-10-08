@@ -237,3 +237,53 @@ searchInput.addEventListener('keypress', (e) => {
         filterProducts();
     }
 });
+
+
+//Nova função ao clicar no produto:
+
+// FUNÇÃO ATUALIZADA: Adiciona o wrapper 'image-link' em volta da imagem
+function adicionarProdutoNaPagina(produto) {
+    const grid = document.getElementById('products-grid');
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.setAttribute('data-id', produto._id);
+
+    card.innerHTML = `
+        <div class="image-link" data-id="${produto._id}">
+            <img src="${produto.imgSrc}" alt="${produto.nome}">
+        </div>
+        <div>
+            <h3>${produto.nome}</h3>
+            <p>${produto.descricao}</p>
+            <span class="price">R$ ${produto.preco.toFixed(2).replace('.', ',')}</span>
+            <button class="btn-details" data-id="${produto._id}">Ver mais fotos</button>
+            <button class="btn-buy" data-id="${produto._id}">Adicionar ao Carrinho</button>
+        </div>
+    `;
+    grid.appendChild(card);
+}
+
+// FUNÇÃO ATUALIZADA: Adiciona o event listener para o novo 'image-link'
+function bindDetailsButtons() {
+    // 1. Vincula o botão "Ver mais fotos" (código que você já tinha)
+    document.querySelectorAll('.btn-details').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.dataset.id;
+            const produtoSelecionado = produtos.find(p => p._id === id);
+            if (produtoSelecionado) {
+                showModal(produtoSelecionado.fotosAdicionais);
+            }
+        });
+    });
+
+    // 2. NOVO: Vincula o clique na imagem
+    document.querySelectorAll('.image-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const id = link.dataset.id;
+            const produtoSelecionado = produtos.find(p => p._id === id);
+            if (produtoSelecionado) {
+                showModal(produtoSelecionado.fotosAdicionais); // Chama a mesma função!
+            }
+        });
+    });
+}
