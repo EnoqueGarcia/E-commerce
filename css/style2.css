@@ -58,29 +58,37 @@
             margin-top: 20px;
     }
 
-    .carrinho-item {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.2s;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+.carrinho-item {
+    /* Ajusta a exibição para alinhar o conteúdo */
+    display: flex;
+    flex-direction: row; /* Altera para linha */
+    align-items: center;
+    text-align: left;
+    gap: 15px; /* Espaço entre imagem e texto */
+}
 
-    .carrinho-item:hover {
-      transform: translateY(-5px);
-    }
 
-    .carrinho-item img {
-      max-width: 200px;
-      height: 250px;
-      border-radius: 5px;
-      margin: auto;
-      display: block;
-    }
+.carrinho-item img {
+    /* Ajusta o tamanho da imagem na nova disposição */
+    max-width: 100px; /* Reduz o tamanho da imagem */
+    height: auto;
+    margin: 0;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1; /* Permite que as informações ocupem o espaço restante */
+}
+
+.quantidade-controle {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    gap: 8px; /* Espaço entre botões e valor */
+}
+
 
     .carrinho-item h3 {
       margin: 10px 0;
@@ -145,3 +153,24 @@
     padding: 0;
 }
 
+
+.btn-quantidade {
+    background-color: #4d2f57; /* Cor principal, mesma do header */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 30px; /* Largura fixa para os botões */
+    height: 30px; /* Altura fixa para os botões */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.btn-quantidade:hover {
+    background-color: #3c4855;
+}

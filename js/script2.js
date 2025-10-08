@@ -1,58 +1,86 @@
- //  JS do carrinho.html
- 
- function carregarCarrinho() {
-      const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-      const listaCarrinho = document.getElementById('carrinho-lista');
-      const totalElement = document.getElementById('carrinho-total');
-      const carrinhoVazio = document.getElementById('carrinho-vazio');
-      const carrinhoConteudo = document.getElementById('carrinho-conteudo');
-      let total = 0;
+function salvarCarrinho(carrinho) {
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}
 
-      listaCarrinho.innerHTML = ''; 
-      
-      if (carrinho.length === 0) {
+function carregarCarrinho() {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const listaCarrinho = document.getElementById('carrinho-lista');
+    const totalElement = document.getElementById('carrinho-total');
+    const carrinhoVazio = document.getElementById('carrinho-vazio');
+    const carrinhoConteudo = document.getElementById('carrinho-conteudo');
+    let total = 0;
+
+    listaCarrinho.innerHTML = ''; 
+
+    if (carrinho.length === 0) {
         carrinhoVazio.classList.remove('hidden');
         carrinhoConteudo.classList.add('hidden');
         return;
-      }
-      
-      carrinhoVazio.classList.add('hidden');
-      carrinhoConteudo.classList.remove('hidden');
+    }
 
-      carrinho.forEach(item => {
+    carrinhoVazio.classList.add('hidden');
+    carrinhoConteudo.classList.remove('hidden');
+
+    carrinho.forEach(item => {
         const itemElement = document.createElement('div');
         itemElement.classList.add('carrinho-item');
+        
+        // NOVO HTML: Inclui os botões de Qtd e remove o botão "Remover"
         itemElement.innerHTML = `
-          <img src="${item.imgSrc}" alt="${item.nome}">
-          <div>
-            <h3>${item.nome}</h3>
-            <span class="price">R$ ${item.preco.toFixed(2).replace('.', ',')}</span>
-            <p>Qtd: ${item.quantidade}</p>
-            <button class="btn-remover" data-id="${item._id}">Remover</button>
-          </div>
+            <img src="${item.imgSrc}" alt="${item.nome}">
+            <div class="item-info">
+                <h3>${item.nome}</h3>
+                <span class="price">R$ ${item.preco.toFixed(2).replace('.', ',')}</span>
+                <div class="quantidade-controle">
+                    <button class="btn-quantidade btn-decremento" data-id="${item._id}">-</button>
+                    <span class="quantidade-valor" data-id="${item._id}">${item.quantidade}</span>
+                    <button class="btn-quantidade btn-incremento" data-id="${item._id}">+</button>
+                </div>
+            </div>
         `;
         listaCarrinho.appendChild(itemElement);
         total += item.preco * item.quantidade;
-      });
+    });
 
-      totalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    totalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
 
-      document.querySelectorAll('.btn-remover').forEach(btn => {
+    // Adiciona event listeners para os novos botões
+    document.querySelectorAll('.btn-incremento').forEach(btn => {
         btn.addEventListener('click', () => {
-          const id = btn.dataset.id;
-          removerItem(id);
+            atualizarQuantidade(btn.dataset.id, 1);
         });
-      });
-    }
+    });
 
-    function removerItem(id) {
-      let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-      
-      carrinho = carrinho.filter(item => item._id !== id);
-      
-      localStorage.setItem('carrinho', JSON.stringify(carrinho));
-      
-      carregarCarrinho();
-    }
+    document.querySelectorAll('.btn-decremento').forEach(btn => {
+        btn.addEventListener('click', () => {
+            atualizarQuantidade(btn.dataset.id, -1);
+        });
+    });
+}
 
-    window.addEventListener('DOMContentLoaded', carregarCarrinho);
+// NOVA FUNÇÃO: Lógica de atualização de quantidade
+function atualizarQuantidade(id, delta) {
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    
+    // Encontra o índice do item
+    const itemIndex = carrinho.findIndex(item => item._id === id);
+    
+    if (itemIndex !== -1) {
+        const novoQtd = carrinho[itemIndex].quantidade + delta;
+
+        if (novoQtd > 0) {
+            // Aumenta ou diminui a quantidade
+            carrinho[itemIndex].quantidade = novoQtd;
+        } else {
+            // Se a quantidade for para 0 ou menos, remove o item
+            carrinho.splice(itemIndex, 1);
+        }
+        
+        salvarCarrinho(carrinho);
+        carregarCarrinho(); // Recarrega o carrinho para atualizar a visualização e o total
+    }
+}
+
+// A função removerItem não é mais necessária, pois a lógica está em atualizarQuantidade
+
+window.addEventListener('DOMContentLoaded', carregarCarrinho);
